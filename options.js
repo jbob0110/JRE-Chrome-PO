@@ -20,7 +20,6 @@ window.onload = () => {
   });
   addSDs();
   addTAs();
-  addSEs();
   document.getElementById('addSD').onclick = () => {
     var name = document.getElementById("SDname").value;
     var id = document.getElementById("SDid").value;
@@ -53,23 +52,6 @@ window.onload = () => {
       } else {
         testAnalysts[name] = true;
         addNames('TAname', 'TAid', 'TAlist', document.getElementById('TAname').value + " :" + document.getElementById('TAid').value, testAnalysts, deleteTA);
-      }
-    });
-  }
-  document.getElementById('addSE').onclick = () => {
-    var name = document.getElementById("SEname").value;
-    chrome.storage.sync.get(['SEarray'], function (result) {
-      for (var i = 0; i < result.SEarray.length; i++) {
-        holder = result.SEarray[i].split(" :");
-        softwareEngineers[holder[0]] = true;
-      }
-      if (softwareEngineers[name] != undefined) {
-        alert("Name already on the list.");
-        document.getElementById('SEname').value = '';
-        document.getElementById('SEid').value = '';
-      } else {
-        softwareEngineers[name] = true;
-        addNames('SEname', 'SEid', 'SElist', document.getElementById('SEname').value + " :" + document.getElementById('SEid').value, softwareEngineers, deleteSE);
       }
     });
   }

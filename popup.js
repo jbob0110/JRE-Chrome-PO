@@ -44,16 +44,14 @@ window.onload = () => {
   document.getElementById('scYes').onclick = () => {
     var Sd = document.getElementById('SDs').value;
     var Ta = document.getElementById('TAs').value;
-    var Se = document.getElementById('SEs').value;
     console.log("SD: "+Sd);
     console.log("TA: "+Ta);
-    console.log("SE: "+Se);
     document.getElementById('loader').style.display = "block";
   /**The requirements XMLHttpRequest is opened and sent*/        
   addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Requirements","description":" ","assignee":{  "name": Sd},"issuetype":{  "name":"Sub-task"}} });
   console.log("Requirements Sent");
   /**The automation XMLHttpRequest is opened and sent*/        
-  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Automation","description":" ","assignee":{  "name": Se},"issuetype":{  "name":"Sub-task"}} });
+  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Automation","description":" ","assignee":{  "name": Ta},"issuetype":{  "name":"Sub-task"}} });
   console.log("Automation Sent");
   };
   
@@ -90,7 +88,7 @@ function addSubTask(subtask){
   asyncRequestCount++;
   xhr.send(JSON.stringify(subtask));
 };
-  
+
 /** This function opens and sends sub-task created in the releaseNotes function*/
 function addReleaseNote(subtask){
   var xhr = new XMLHttpRequest;

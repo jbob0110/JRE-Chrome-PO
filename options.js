@@ -127,32 +127,6 @@ function deleteTA(e) {
   }
   save_options();
 }
-function deleteSE(e) {
-  var closebtns = document.getElementsByClassName("close");
-  for (i = 0; i < softwareEngineers.length; i++) {
-    if (!isFirefox) {
-      if (softwareEngineers[i] === e.path[1].innerHTML) {
-        var holder = softwareEngineers[i].split(" :");
-        softwareEngineers[holder[0]] = undefined;
-        softwareEngineers.splice(i, 1);
-        break;
-      }
-    } else {
-      if (softwareEngineers[i] === e.originalTarget.parentElement.innerHTML) {
-        var holder = softwareEngineers[i].split(" :");
-        softwareEngineers[holder[0]] = undefined;
-        softwareEngineers.splice(i, 1);
-        break;
-      }
-    }
-  }
-  if (!isFirefox) {
-    e.path[1].style.display = "none";
-  } else {
-    e.originalTarget.parentElement.style.display = "none";
-  }
-  save_options();
-}
 function addSDs() {
   chrome.storage.sync.get(['SDarray'], function (result) {
     for (var i = 0; i < result.SDarray.length; i++) {
@@ -166,14 +140,6 @@ function addTAs() {
     for (var i = 0; i < result.TAarray.length; i++) {
       result.TAarray[i] = result.TAarray[i].split("<sp")[0];
       addNames('TAname', 'TAid', 'TAlist', result.TAarray[i], testAnalysts, deleteTA);
-    }
-  });
-}
-function addSEs() {
-  chrome.storage.sync.get(['SEarray'], function (result) {
-    for (var i = 0; i < result.SEarray.length; i++) {
-      result.SEarray[i] = result.SEarray[i].split("<sp")[0];
-      addNames('SEname', 'SEid', 'SElist', result.SEarray[i], softwareEngineers, deleteSE);
     }
   });
 }

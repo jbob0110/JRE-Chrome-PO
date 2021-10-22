@@ -48,10 +48,10 @@ window.onload = () => {
     console.log("TA: "+Ta);
     document.getElementById('loader').style.display = "block";
   /**The requirements XMLHttpRequest is opened and sent*/        
-  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Requirements","description":" ","assignee":{  "name": Sd},"issuetype":{  "name":"Sub-task"}} });
+  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Requirements","description":" ","assignee":{  "name": Sd},"reporter":{  "name": Sd},"issuetype":{  "name":"Sub-task"}} });
   console.log("Requirements Sent");
   /**The automation XMLHttpRequest is opened and sent*/        
-  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Automation","description":" ","assignee":{  "name": Ta},"issuetype":{  "name":"Sub-task"}} });
+  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Automation","description":" ","assignee":{  "name": Ta},"reporter":{  "name": Ta},"issuetype":{  "name":"Sub-task"}} });
   console.log("Automation Sent");
   };
   
@@ -77,7 +77,6 @@ function addSubTask(subtask){
   var xhr = new XMLHttpRequest;
   xhr.open("POST", "https://"+jiraInstance+".cerner.com/rest/api/2/issue/");
   xhr.setRequestHeader("Content-Type","application/json");
-  xhr.setRequestHeader("User-Agent", "plugin agent");
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
       console.log(xhr.responseText);

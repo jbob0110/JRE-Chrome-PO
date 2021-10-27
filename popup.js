@@ -50,9 +50,9 @@ window.onload = () => {
   /**The requirements XMLHttpRequest is opened and sent*/        
   addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Requirements","description":" ","assignee":{  "name": Sd},"reporter":{  "name": Sd},"issuetype":{  "name":"Sub-task"}} });
   console.log("Requirements Sent");
-  /**The automation XMLHttpRequest is opened and sent*/        
-  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Automation","description":" ","assignee":{  "name": Ta},"reporter":{  "name": Ta},"issuetype":{  "name":"Sub-task"}} });
-  console.log("Automation Sent");
+  /**The Test Case XMLHttpRequest is opened and sent*/        
+  addSubTask({"fields":{  "project":{  "key": project },"parent":{ "key": jiraKey},"summary":"Test Case","description":" ","assignee":{  "name": Ta},"reporter":{  "name": Ta},"issuetype":{  "name":"Sub-task"}} });
+  console.log("Test Case Sent");
   };
   
   document.getElementById('releaseNote').onclick = () => {
